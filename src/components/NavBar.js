@@ -8,7 +8,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 border-b-2'>
+    <nav className='relative flex flex-wrap items-center justify-between px-2 py-3 mb-6 border-b-2 border-blue-400'>
       <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
         <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
           <a
@@ -33,7 +33,7 @@ const NavBar = () => {
           <ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
             <li>
               <a
-                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
+                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-400'
                 href='/'
               >
                 Search
@@ -41,7 +41,7 @@ const NavBar = () => {
             </li>
             <li>
               <a
-                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
+                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-400'
                 href='/'
               >
                 Trade
@@ -49,7 +49,7 @@ const NavBar = () => {
             </li>
             <li>
               <a
-                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
+                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-400'
                 href='/'
               >
                 My Collection
