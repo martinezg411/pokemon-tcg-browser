@@ -11,7 +11,7 @@ const Modal = ({ children, close }) => {
 
   return (
     <div
-      className='fixed z-10 top-0 left-0 bg-black h-screen w-screen bg-opacity-90 text-center'
+      className='fixed z-10 top-0 left-0 bg-black h-screen w-screen bg-opacity-90 text-center p-8'
       onClick={handleClick}
     >
       <button
@@ -20,7 +20,7 @@ const Modal = ({ children, close }) => {
       >
         X
       </button>
-      <div ref={contentRef} className='inline-block'>
+      <div ref={contentRef} className='inline-block min-w-sm sm:h-full'>
         {children}
       </div>
     </div>

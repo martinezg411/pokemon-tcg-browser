@@ -80,7 +80,7 @@ const CardList = ({ setID }) => {
           <img
             src={modalCard.images.large}
             alt='Pokemon Card'
-            className='h-screen'
+            className='sm:h-full mx-auto'
           />
         </Modal>
       )}
