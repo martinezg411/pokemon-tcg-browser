@@ -6,7 +6,7 @@ import CardList from './components/CardList';
 
 function App() {
   return (
-    <div className='text-white'>
+    <div>
       <NavBar />
       <CardList setID={'swsh4'} />
     </div>

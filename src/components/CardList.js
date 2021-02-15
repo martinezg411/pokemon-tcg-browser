@@ -26,7 +26,7 @@ const CardList = ({ setID }) => {
     }
   };
 
-  const pageForward = () => {
+  const pageForward = (event) => {
     const maxPages = Math.floor(cards.length / pageSize);
     if (page !== maxPages) {
       setPage(page + 1);
@@ -80,7 +80,7 @@ const CardList = ({ setID }) => {
           <img
             src={modalCard.images.large}
             alt='Pokemon Card'
-            className='h-full mx-auto'
+            className='h-screen'
           />
         </Modal>
       )}
