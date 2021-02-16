@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import GridLayout from './GridLayout';
 import CardItem from './CardItem';
 import Modal from './Modal';
+import Filters from './Filters';
 import PropTypes from 'prop-types';
 
 import axios from 'axios';
@@ -11,6 +12,7 @@ const CardList = ({ setID }) => {
   const [page, setPage] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [modalCard, setModalCard] = useState(null);
+  const [display, setDisplay] = useState('tile');
   const pageSize = 15; // May or may not be converted to state to allow user to change items on page
   const maxPages = Math.floor(cards.length / pageSize);
 
@@ -75,6 +77,7 @@ const CardList = ({ setID }) => {
 
   return (
     <div>
+      <Filters display={display} setListStyle={setDisplay} />
       {showModal && (
         <Modal close={closeModal}>
           <img
