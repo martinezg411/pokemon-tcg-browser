@@ -18,7 +18,7 @@ const Modal = ({ children, close }) => {
         className='text-white text-2xl font-bold absolute top-3 left-3 hover:text-blue-400'
         onClick={close}
       >
-        X
+        <i className='fas fa-times'></i>
       </button>
       <div ref={contentRef} className='inline-block min-w-sm sm:h-full'>
         {children}

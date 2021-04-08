@@ -1,45 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import GridLayout from './GridLayout';
+import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import CardItem from './CardItem';
 import Modal from './Modal';
-import Filters from './Filters';
-import PropTypes from 'prop-types';
+import Alert from './Alert';
 
-import axios from 'axios';
+import AlertContext from '../context/alert/alertContext';
 
-const CardList = ({ setID }) => {
-  const [cards, setCards] = useState([]);
-  const [page, setPage] = useState(0);
+const CardList = ({ cards }) => {
+  const alertContext = useContext(AlertContext);
+  const { alert } = alertContext;
+
+  const pageSize = 8;
   const [showModal, setShowModal] = useState(false);
   const [modalCard, setModalCard] = useState(null);
-  const [display, setDisplay] = useState('tile');
-  const pageSize = 15; // May or may not be converted to state to allow user to change items on page
-  const maxPages = Math.floor(cards.length / pageSize);
-
-  const getCardList = async (id) => {
-    try {
-      const response = await axios.get(
-        `https://api.pokemontcg.io/v2/cards?q=set.id:${setID}`,
-      );
-      setCards(response.data.data);
-    } catch (error) {
-      setCards([]);
-      console.log(error);
-    }
-  };
-
-  const pageForward = (event) => {
-    const maxPages = Math.floor(cards.length / pageSize);
-    if (page !== maxPages) {
-      setPage(page + 1);
-    }
-  };
-
-  const pageBack = () => {
-    if (page !== 0) {
-      setPage(page - 1);
-    }
-  };
+  const [page, setPage] = useState(0);
 
   const closeModal = () => {
     setShowModal(false);
@@ -51,33 +25,28 @@ const CardList = ({ setID }) => {
     setShowModal(true);
   };
 
-  const getCardsToDisplay = (page, numItems) => {
+  const changePage = (newPage) => {
+    const maxPages = Math.ceil(cards.length / pageSize);
+    if (newPage >= 0 && newPage < maxPages) {
+      setPage(newPage);
+    }
+  };
+
+  const getCardsInPage = (page) => {
     let result = [];
-    const start = page * numItems;
-    const end = Math.min(start + numItems, cards.length);
+    const start = page * pageSize;
+    const end = Math.min(start + pageSize, cards.length);
     let i = start;
     for (; i < end; ++i) {
       result.push(
-        <CardItem
-          card={cards[i]}
-          key={cards[i].id}
-          index={i}
-          openModal={openModal}
-        />,
+        <CardItem key={cards[i].id} card={cards[i]} openModal={openModal} />,
       );
     }
-
     return result;
   };
 
-  useEffect(() => {
-    getCardList(setID);
-    //eslint-disable-next-line
-  }, []);
-
   return (
     <div>
-      <Filters display={display} setListStyle={setDisplay} />
       {showModal && (
         <Modal close={closeModal}>
           <img
@@ -87,31 +56,40 @@ const CardList = ({ setID }) => {
           />
         </Modal>
       )}
-      <GridLayout>{getCardsToDisplay(page, pageSize)}</GridLayout>
-      {/* Page Controls */}
-      <div className='flex justify-center my-6'>
+
+      {alert !== null && <Alert message={alert.message} type={alert.type} />}
+
+      <div className='container flex mx-auto justify-center items-center'>
         <button
-          className='text-white bg-blue-400 h-10 w-20 rounded-lg cursor-pointer hover:bg-blue-600 mr-2 disabled:opacity-50 disabled:bg-blue-400'
-          onClick={pageBack}
-          disabled={page === 0 ? true : false}
+          className='text-white text-2xl text-bold h-12 w-12 bg-black rounded-full hover:bg-gray-600 focus:outline-none disabled:opacity-25 disabled:bg-gray-600 '
+          disabled={page === 0}
+          onClick={() => {
+            changePage(page - 1);
+          }}
         >
-          Previous
+          <i className='fas fa-chevron-left'></i>
         </button>
+        <div className='grid grid-cols-4  mx-auto'>{getCardsInPage(page)}</div>
         <button
-          className='text-white bg-blue-400 h-10 w-20 rounded-lg cursor-pointer hover:bg-blue-600 ml-2 disabled:opacity-50 disabled:bg-blue-400'
-          onClick={pageForward}
-          disabled={page === maxPages ? true : false}
+          className='text-white text-2xl text-bold h-12 w-12 bg-black rounded-full hover:bg-gray-600 focus:outline-none disabled:opacity-25 disabled:bg-gray-600'
+          disabled={page >= Math.ceil(cards.length / pageSize) - 1}
+          onClick={() => {
+            changePage(page + 1);
+          }}
         >
-          Next
+          <i className='fas fa-chevron-right'></i>
         </button>
       </div>
     </div>
   );
 };
 
-// CardList.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   items: PropTypes.array.isRequired,
-// };
+CardList.propTypes = {
+  cards: PropTypes.array.isRequired,
+};
+
+CardList.defaultProps = {
+  cards: [],
+};
 
 export default CardList;

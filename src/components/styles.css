@@ -1,0 +1,16 @@
+.filter-enter {
+  height: min-content;
+}
+
+.filter-enter-active {
+  height: min-content;
+  transition: height 300ms ease-in-out;
+}
+
+.filter-exit {
+  height: 0;
+}
+
+.filter-exit-active {
+  height: 0;
+}
