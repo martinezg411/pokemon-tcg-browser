@@ -59,7 +59,7 @@ const CardList = ({ cards }) => {
 
       {alert !== null && <Alert message={alert.message} type={alert.type} />}
 
-      <div className='container flex mx-auto justify-center items-center'>
+      <div className='container flex mx-auto justify-center items-center mt-4'>
         <button
           className='text-white text-2xl text-bold h-12 w-12 bg-black rounded-full hover:bg-gray-600 focus:outline-none disabled:opacity-25 disabled:bg-gray-600 '
           disabled={page === 0}

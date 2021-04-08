@@ -40,7 +40,7 @@ const CardItem = ({ card, openModal }) => {
   };
 
   return (
-    <div className='cursor-pointer rounded-xl p-3 hover:bg-gray-900'>
+    <div className='cursor-pointer rounded-xl p-3 hover:bg-gray-800'>
       <div className='flex flex-row justify-between px-2 pb-1'>
         {favorited ? (
           <button className='focus:outline-none' onClick={toggleFavorite}>

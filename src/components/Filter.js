@@ -23,7 +23,7 @@ const Filter = ({ name, children }) => {
       <div
         className={` ${
           isActive ? 'grid' : 'hidden'
-        } grid-cols-3 justify-items-center py-4`}
+        } grid-cols-4 justify-items-center py-4`}
       >
         {children}
       </div>
