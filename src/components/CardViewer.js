@@ -14,9 +14,19 @@ const CardViewer = ({ location }) => {
 
   useEffect(() => {
     const query = queryString.parse(location.search);
+    let queries = '';
+
+    if (query.name !== undefined) {
+      queries += `name:${query.name} `;
+    }
+
+    if (query.set !== undefined) {
+      queries += `set.id:${query.set}`;
+    }
+
     pokemon.card
       .where({
-        q: `name:${query.name}`,
+        q: queries,
         orderBy: '-set.releaseDate',
       })
       .then((result) => {

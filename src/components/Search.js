@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import queryString from 'query-string';
-
 import SearchFilters from './SearchFilters';
 
 const Search = ({ history }) => {

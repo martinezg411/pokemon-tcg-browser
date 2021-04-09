@@ -22,9 +22,7 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route path='/browse'>
-              <SetBrowser />
-            </Route>
+            <Route path='/browse' component={SetBrowser} />
             <Route path='/search' component={Search}></Route>
             <Route path='/cards' component={CardViewer}></Route>
             <Route path='/mycollection'>hi</Route>
