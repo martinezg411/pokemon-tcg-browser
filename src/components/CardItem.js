@@ -1,82 +1,74 @@
-import { useState, useContext } from 'react';
-import CardContext from '../context/card/cardContext';
-import AlertContext from '../context/alert/alertContext';
+import { useContext } from 'react';
+import UserContext from '../context/user/UserContext';
 
-const CardItem = ({ card, openModal }) => {
-  const cardContext = useContext(CardContext);
-  const { collection, addToCollection, removeFromCollection } = cardContext;
-
-  const alertContext = useContext(AlertContext);
-  const { setAlert } = alertContext;
-
-  const inCollection = collection.includes(card.id);
-
-  const [checked, setChecked] = useState(inCollection);
-  const [favorited, setFavorited] = useState(false);
+const CardItem = ({ card, alert, expand }) => {
+  const userContext = useContext(UserContext);
+  const { isUserAuthenticated, isCardInCollection, add, remove } = userContext;
 
   const handleClick = () => {
-    openModal(card);
+    expand(card);
   };
 
   const toggleCheck = () => {
-    if (checked === false) {
-      addToCollection(card.id);
-      setAlert(
-        `Added ${card.name} from ${card.set.name} to your collection.`,
-        'success',
-      );
-    } else {
-      removeFromCollection(card.id);
-      setAlert(
-        `Removed ${card.name} from ${card.set.name} from your collection.`,
-        'failure',
-      );
+    if (!isUserAuthenticated()) {
+      alert({
+        type: 'failure',
+        message: 'Please login to your account to modify your collection.',
+      });
+      return;
     }
-    setChecked(!checked);
+
+    if (isCardInCollection(card)) {
+      remove(card).then((result) => {
+        alert(result);
+      });
+    } else {
+      add(card).then((result) => {
+        alert(result);
+      });
+    }
   };
 
-  const toggleFavorite = () => {
-    setFavorited(!favorited);
-  };
+  const btn = (
+    <div className={'absolute -top-2 -right-2 rounded-md bg-black p-2'}>
+      {isCardInCollection(card) ? (
+        <button
+          className='text-blue-500 hover:text-blue-600 focus:outline-none'
+          onClick={toggleCheck}
+        >
+          <i className='fas fa-check-square fa-lg'></i>
+        </button>
+      ) : (
+        <button
+          className='text-blue-500 hover:text-blue-600 text-xl focus:outline-none'
+          onClick={toggleCheck}
+        >
+          <i className='fas fa-expand fa-lg'></i>
+        </button>
+      )}
+    </div>
+  );
 
   return (
-    <div className='cursor-pointer rounded-xl p-3 hover:bg-gray-800'>
-      <div className='flex flex-row justify-between px-2 pb-1'>
-        {favorited ? (
-          <button className='focus:outline-none' onClick={toggleFavorite}>
-            <i className='fas fa-heart text-red-400 fa-lg'></i>
-          </button>
-        ) : (
-          <button className='focus:outline-none' onClick={toggleFavorite}>
-            <i className='far fa-heart text-red-400 fa-lg'></i>
-          </button>
-        )}
-        <h1 className='text-white text-sm'>{card.set.name}</h1>
-        {checked === true ? (
-          <button
-            className='text-blue-200 text-xl focus:outline-none'
-            onClick={toggleCheck}
-          >
-            <i className='fas fa-check-square'></i>
-          </button>
-        ) : (
-          <button
-            className='text-blue-200 text-xl focus:outline-none'
-            onClick={toggleCheck}
-          >
-            <i className='fas fa-expand'></i>
-          </button>
-        )}
-      </div>
-      <div>
+    <div>
+      <div className='relative'>
+        {isUserAuthenticated() && btn}
         <img
           src={card.images.small}
-          className='mx-auto'
+          className={`mx-auto ${
+            isCardInCollection(card)
+              ? 'border-8 border-blue-600 rounded-2xl'
+              : 'border-0'
+          }`}
           onClick={handleClick}
         />
       </div>
     </div>
   );
+};
+
+CardItem.defaultProps = {
+  card: null,
 };
 
 export default CardItem;

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        'card-image': "url('./pokeballAndCards.jpg')",
+        'card-image': "url('./images/homeBackground.jpg')",
       }),
     },
     minWidth: {
@@ -13,6 +13,10 @@ module.exports = {
 
     minHeight: {
       sm: '390px',
+    },
+    boxShadow: {
+      inner:
+        'inset 120px 100px 250px #000000, inset -120px -100px 250px #000000',
     },
   },
   variants: {

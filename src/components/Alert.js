@@ -1,13 +1,15 @@
-import React from 'react';
-
-const Alert = ({ message, type }) => {
+const Alert = ({ type, message, removeAlert }) => {
   return (
     <div
       className={`${
-        type === 'success' ? 'bg-green-400' : 'bg-red-500'
-      } p-4 text-md text-white w-1/2 shadow-lg rounded-xl text-center fixed left-1/2 top-5 transform -translate-x-2/4`}
+        type === 'success' ? 'bg-green-600' : 'bg-red-500'
+      } container flex flex-row justify-between p-4 text-white rounded-md font-bold fixed bottom-5 z-10 bg-opacity-95`}
     >
-      <h1>{message}</h1>
+      <span>{message}</span>
+      <i
+        className='fas fa-times text-xl hover:text-gray-300'
+        onClick={removeAlert}
+      ></i>
     </div>
   );
 };

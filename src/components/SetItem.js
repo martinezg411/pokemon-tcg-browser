@@ -1,18 +1,18 @@
 const SetItem = ({ item, handleClick }) => {
   return (
     <div
-      className='flex flex-col justify-between mx-auto hover:bg-gray-600 p-8 rounded-xl bg-black'
+      className='hover:bg-gray-800 p-8 rounded-xl bg-gray-900 cursor-pointer w-full'
       onClick={() => {
         handleClick(item.id);
       }}
     >
-      <div className='flex flex-row justify-start'>
-        <img src={item.images.symbol} alt='' className='w-10 h-10 mr-4' />
+      <div className='flex flex-row justify-center'>
+        <img src={item.symbol} alt='' className='w-8 h-8 mr-4' />
         <div>
-          <h2 className='text-xl font-bold '>{item.name}</h2>
-          <h2>
+          <h2 className='text-md font-bold '>{item.name}</h2>
+          <h2 className='text-xs'>
             {' '}
-            <span className='text-blue-400'>Release Date: </span>
+            <span className='text-blue-400 text-xs'>Release Date: </span>
             {item.releaseDate}
           </h2>
         </div>
