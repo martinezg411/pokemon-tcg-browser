@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import LogoutButton from './LogoutButton';
 import UserContext from '../context/user/UserContext';
 
 const NavBar = () => {
   const userContext = useContext(UserContext);
-  const { isUserAuthenticated } = userContext;
+  const { isUserAuthenticated, logout } = userContext;
   const isAuthenticated = isUserAuthenticated();
 
   const [navBarOpen, setNavBarOpen] = useState(false);
@@ -15,7 +14,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='relative flex flex-wrap items-center justify-between px-2 py-2 border-b border-gray-700'>
+    <nav className='relative flex flex-wrap items-center justify-between px-2 py-1 border-b border-gray-700'>
       <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
         <div className='w-full relative flex flex-row flex-grow lg:flex-row justify-between lg:w-auto lg:static'>
           <Link
@@ -60,9 +59,14 @@ const NavBar = () => {
                 Collection
               </Link>
             </li>
-            <li className='lg: py-1 pl-2'>
+            <li className='lg:py-1'>
               {isAuthenticated ? (
-                <LogoutButton />
+                <button
+                  onClick={logout}
+                  className='px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
+                >
+                  Logout
+                </button>
               ) : (
                 <Link
                   to='/login'
