@@ -14,7 +14,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='relative flex flex-wrap items-center justify-between px-2 py-1 border-b border-gray-700'>
+    <nav className='relative flex flex-wrap items-center justify-between px-2 py-2 border-b border-gray-700'>
       <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
         <div className='w-full relative flex flex-row flex-grow lg:flex-row justify-between lg:w-auto lg:static'>
           <Link
