@@ -48,17 +48,17 @@ const Login = () => {
   } else {
     return (
       <form
-        className='w-1/3 mx-auto flex flex-col mt-8'
+        className='container px-2 sm:w-1/2 mx-auto flex flex-col my-8'
         onSubmit={handleSubmit}
       >
-        <h1 className='text-3xl font-bold mb-4 text-blue-600'>
+        <h1 className='text-2xl font-bold mb-2 text-blue-600'>
           Login{' '}
           <span className='text-sm ml-1 hover:text-blue-800'>
             or <Link to='/signup'>create an account</Link>
           </span>
         </h1>
         {error !== null && (
-          <h1 className='text-red-600  text-bold text-lg'>{error}</h1>
+          <h1 className='text-red-600 text-lg mb-2'>{error}</h1>
         )}
         <label className='mb-2 font-bold text-white' htmlFor='email'>
           Email
@@ -87,11 +87,11 @@ const Login = () => {
           required
           onChange={handleChange}
         />
-        <button className='bg-blue-500 text-white text-bold p-2 text-md rounded-lg hover:bg-blue-700 focus:outline-none mb-4'>
+        <button className='bg-blue-600 text-white text-bold p-2 text-md rounded-lg hover:bg-blue-700 focus:outline-none mb-4'>
           Login
         </button>
         <button
-          className='w-full bg-blue-500 text-white p-2 hover:bg-blue-700 rounded-lg mx-auto focus:outline-none'
+          className='w-full bg-blue-600 text-white p-2 hover:bg-blue-700 rounded-lg mx-auto focus:outline-none'
           onClick={handleGoogleLogin}
         >
           <i className='fab fa-google mr-2' /> Sign In with Google

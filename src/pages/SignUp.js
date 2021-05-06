@@ -48,7 +48,7 @@ const SignUp = () => {
   } else {
     return (
       <form
-        className='container flex flex-col px-4 sm:w-1/2 mx-auto mt-8'
+        className='container flex flex-col px-4 sm:w-1/2 mx-auto my-8'
         onSubmit={handleSubmit}
       >
         <h1 className='text-2xl font-bold mb-2 text-blue-600'>
