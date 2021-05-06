@@ -1,7 +1,7 @@
 const SetItem = ({ item, handleClick }) => {
   return (
     <div
-      className='hover:bg-gray-800 p-8 rounded-xl bg-gray-900 cursor-pointer w-full'
+      className='hover:bg-gray-800 p-8 rounded-xl bg-gray-900 cursor-pointer'
       onClick={() => {
         handleClick(item.id);
       }}
