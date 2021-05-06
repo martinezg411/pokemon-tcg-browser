@@ -24,9 +24,9 @@ const Search = ({ history }) => {
   };
 
   return (
-    <div className='container mx-auto mt-4'>
+    <div className='container mx-auto mt-8'>
       <form
-        className='mx-2 sm:mx-0 px-2 pt-2 pb-4 flex flex-row text-2xl border-blue-600 border-b-2 '
+        className='mx-2 sm:mx-0 px-2 pt-2 pb-4 flex flex-row text-2xl sm:text-3xl border-blue-600 border-b-2 '
         onSubmit={handleSumbit}
       >
         <button className='text-white hover:text-blue-600 pr-2'>
