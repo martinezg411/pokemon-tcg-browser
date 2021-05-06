@@ -48,16 +48,16 @@ const SignUp = () => {
   } else {
     return (
       <form
-        className='flex flex-col p-8 w-1/3 mx-auto mt-8'
+        className='container flex flex-col px-4 sm:w-1/2 mx-auto mt-8'
         onSubmit={handleSubmit}
       >
-        <h1 className='text-3xl font-bold mb-4 text-blue-600'>
+        <h1 className='text-2xl font-bold mb-2 text-blue-600'>
           Create An Account{' '}
           <span className='text-sm ml-1 hover:text-blue-800'>
             or <Link to='/login'>sign in</Link>
           </span>
         </h1>
-        {error && <h1 className='text-red-600 text-bold text-lg'>{error}</h1>}
+        {error && <h1 className='text-red-600 text-lg mb-2'>{error}</h1>}
         <label className='mb-2 font-bold text-white' htmlFor='email'>
           Email
         </label>
