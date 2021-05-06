@@ -17,36 +17,35 @@ const NavBar = () => {
   return (
     <nav className='relative flex flex-wrap items-center justify-between px-2 py-2 border-b border-gray-700'>
       <div className='container px-4 mx-auto flex flex-wrap items-center justify-between'>
-        <div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+        <div className='w-full relative flex flex-row flex-grow lg:flex-row justify-between lg:w-auto lg:static'>
           <Link
             className='text-lg font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white'
             to='/'
           >
-            Card<strong className='text-blue-400'>Dex</strong>
+            Card<strong className='text-blue-600'>Dex</strong>
           </Link>
-          <button
-            className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none hover:opacity-75'
-            type='button'
-            onClick={handleClick}
-          >
-            <i className='fas fa-bars'></i>
-          </button>
+          <div className='flex flex-row'>
+            <Link to='/search'>
+              <i className='fas fa-search text-white pt-2 mr-4 text-lg hover:text-blue-600'></i>
+            </Link>
+            <button
+              className='text-white cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none hover:text-blue-600'
+              type='button'
+              onClick={handleClick}
+            >
+              <i className='fas fa-bars'></i>
+            </button>
+          </div>
         </div>
+
         <div
-          className={`lg:flex flex-grow items-center ${
-            navBarOpen ? 'flex' : 'hidden'
-          }`}
+          className={`lg:flex items-center ${navBarOpen ? 'flex' : 'hidden'}`}
         >
-          <ul className='flex flex-col lg:flex-row lg:justify-end list-none w-full lg:ml-auto'>
-            <li className='block lg:list-item mb-2 lg:mb-0 lg:mr-2'>
-              <Link to='/search'>
-                <i className='fas fa-search text-white pt-1 text-lg hover:text-blue-600'></i>
-              </Link>
-            </li>
+          <ul className='flex flex-col lg:flex-row lg:justify-end list-none lg:ml-auto'>
             <li className='lg:py-1'>
               <Link
                 to='/browse'
-                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
+                className='px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
                 href='/'
               >
                 Browse
@@ -55,7 +54,7 @@ const NavBar = () => {
             <li className='lg:py-1'>
               <Link
                 to='/mycollection'
-                className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
+                className='px-3 py-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
                 href='/'
               >
                 Collection
