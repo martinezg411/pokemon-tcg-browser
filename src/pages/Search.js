@@ -24,33 +24,34 @@ const Search = ({ history }) => {
   };
 
   return (
-    <form
-      className='container mx-auto my-8 flex bg-black border-b-4 border-blue-600 h-20 items-center text-3xl mb-8'
-      onSubmit={handleSumbit}
-    >
-      <button className='text-white pl-2 hover:text-blue-600'>
-        {' '}
-        <i className='fas fa-search'></i>
-      </button>
-      <input
-        name='search'
-        type='text'
-        placeholder='Search for card'
-        required
-        value={text}
-        className='ml-2 bg-black text-white font-bold flex-grow focus:outline-none rounded-xl px-2 text-md'
-        onChange={handleChange}
-      />
-      <button
-        onClick={clearText}
-        type='button'
-        className={`${
-          text !== '' ? 'block' : 'hidden'
-        } text-white hover:text-blue-600`}
+    <div className='container mx-auto mt-4'>
+      <form
+        className='mx-2 sm:mx-0 px-2 pt-2 pb-4 flex flex-row text-2xl border-blue-600 border-b-2 '
+        onSubmit={handleSumbit}
       >
-        <i className='fas fa-times pr-3'></i>
-      </button>
-    </form>
+        <button className='text-white hover:text-blue-600 pr-2'>
+          <i className='fas fa-search'></i>
+        </button>
+        <input
+          name='search'
+          type='text'
+          placeholder='Search for card'
+          required
+          value={text}
+          className='bg-black text-white flex-grow font-bold focus:outline-none text-md'
+          onChange={handleChange}
+        />
+        <button
+          onClick={clearText}
+          type='button'
+          className={`${
+            text !== '' ? 'block' : 'hidden'
+          } text-white hover:text-blue-600 pl-2 `}
+        >
+          <i className='fas fa-times'></i>
+        </button>
+      </form>
+    </div>
   );
 };
 
