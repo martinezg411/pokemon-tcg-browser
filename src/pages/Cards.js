@@ -88,16 +88,16 @@ const Cards = () => {
             }}
           />
         )}
-        <div className='flex flex-row justify-between items-center mb-4'>
+        <div className='flex flex-col lg:flex-row justify-between items-center px-2 mb-4'>
           <h1 className='text-white text-3xl py-6 font-bold'>
             {cards.length} Cards Retrieved
           </h1>
 
           {/* Filters available only when user is logged in */}
           {isUserAuthenticated() && (
-            <div>
+            <div className='flex flex-col md:flex-row'>
               <button
-                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none hover:bg-blue-700 ${
+                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none ml-2 hover:bg-blue-700 mb-2 lg:mb-0 ${
                   filter === 'ALL' ? 'bg-blue-600' : 'bg-black'
                 }`}
                 onClick={() => {
@@ -107,7 +107,7 @@ const Cards = () => {
                 Show All
               </button>
               <button
-                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none ml-2 hover:bg-blue-700 ${
+                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none ml-2 hover:bg-blue-700 mb-2 lg:mb-0 ${
                   filter === 'CIC' ? 'bg-blue-600' : 'bg-black'
                 }`}
                 onClick={() => setFilter('CIC')}
@@ -115,7 +115,7 @@ const Cards = () => {
                 Show Cards In Your Collection
               </button>
               <button
-                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none ml-2 hover:bg-blue-700 ${
+                className={`text-white border-2 border-blue-600 px-4 py-2 rounded-full focus:outline-none ml-2 hover:bg-blue-700 mb-2 lg:mb-0 ${
                   filter === 'NIC' ? 'bg-blue-600' : 'bg-black'
                 }`}
                 onClick={() => {
@@ -129,7 +129,7 @@ const Cards = () => {
         </div>
 
         {/* Retrieved Cards */}
-        <div className='grid grid-cols-5 gap-4'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2  px-2'>
           {filteredCards.map((card) => {
             return (
               <CardItem
