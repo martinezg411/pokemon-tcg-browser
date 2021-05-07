@@ -18,13 +18,18 @@ const SetProgressItem = ({ information }) => {
   return (
     <div className='bg-gray-900 rounded-xl mb-6'>
       {/* Collection Info */}
-      <div className='text-white mx-auto  p-8 rounded-xl mb-4'>
-        <div className='flex justify-between mb-2'>
-          <span className='text-2xl text-white'>
-            <img src={symbol} className='inline-block h-6 w-6 mr-1' /> {name}{' '}
-            <span className='text-sm ml-1 text-blue-500'>Series: {series}</span>
-          </span>{' '}
-          <span className='text-blue-400 ml-4'>
+      <div className='text-white mx-auto  p-6 rounded-xl mb-4'>
+        <div className='flex flex-col sm:flex-row items-baseline sm:justify-between mb-2'>
+          <div className='flex flex-col sm:flex-row sm:justify-evenly items-baseline text-xl sm:text-2xl text-white'>
+            <span className='mb-1 sm:mb-0'>
+              <img src={symbol} className='inline-block h-6 w-6 mr-2' />
+              <span> {name} </span>
+            </span>
+            <span className='text-sm sm:ml-2 text-blue-500 '>
+              Series: {series}
+            </span>
+          </div>
+          <span className='text-blue-400 sm:ml-4'>
             Released: <span className='text-white'>{releaseDate}</span>
           </span>
         </div>
@@ -51,16 +56,16 @@ const SetProgressItem = ({ information }) => {
           </div>
         </div>
         {/* Buttons */}
-        <div className='flex justify-between'>
-          <div>
+        <div className='flex flex-col sm:flex-row justify-between'>
+          <div className='w-full sm:w-auto flex flex-col sm:flex-row'>
             <button
-              className='bg-green-500 h-12 w-40 rounded mr-2 hover:bg-green-600 focus:outline-none'
+              className='w-full mb-2 sm:mb-0 bg-green-500 h-12 sm:w-40 rounded mr-2 hover:bg-green-600 focus:outline-none'
               onClick={() => handleClick('CIC')}
             >
               Cards In Collection
             </button>
             <button
-              className='bg-red-600 h-12 w-40 rounded hover:bg-red-700 focus:outline-none'
+              className='w-full mb-2 sm:mb-0 bg-red-600 h-12 sm:w-40 rounded hover:bg-red-700 focus:outline-none'
               onClick={() => handleClick('NIC')}
             >
               Missing Cards

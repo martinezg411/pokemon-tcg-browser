@@ -46,7 +46,7 @@ const MyCollection = () => {
     return <Spinner message='Retrieving your collection.' />;
   } else {
     return (
-      <div className='container mx-auto mt-8 flex flex-col'>
+      <div className='container mx-auto my-8 px-2 flex flex-col'>
         {collectionSets.length === 0 ? (
           <h1 className='text-white text-center font-bold'>
             Your collection is empty. Add cards and your progress for the
