@@ -7,6 +7,7 @@ import Modal from '../components/Modal';
 import Alert from '../components/Alert';
 import Spinner from '../components/Spinner';
 import Error from '../components/Error';
+import Pagination from '../components/Pagination';
 
 import queryString from 'query-string';
 import pokemon from '../config/pokemon';
@@ -15,6 +16,8 @@ const Cards = () => {
   const { isCardInCollection, isUserAuthenticated } = useContext(UserContext);
   const location = useLocation();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(20);
   const [cards, setCards] = useState([]);
   const [modalCard, setModalCard] = useState(null);
   const [error, setError] = useState(null);
@@ -66,6 +69,12 @@ const Cards = () => {
     const filtered = cards.filter(FILTERS[filter]);
     setFilteredCards(filtered);
   }, [filter, cards]);
+
+  // Get posts for current page
+  const indexOfLastPost = currentPage * cardsPerPage;
+  const indexOfFirstPost = indexOfLastPost - cardsPerPage;
+  const cardsOnPage = filteredCards.slice(indexOfFirstPost, indexOfLastPost);
+  const changePage = (pageNum) => setCurrentPage(pageNum);
 
   if (!isLoaded) {
     return <Spinner message='Fetching Data' />;
@@ -130,7 +139,7 @@ const Cards = () => {
 
         {/* Retrieved Cards */}
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2  px-2'>
-          {filteredCards.map((card) => {
+          {cardsOnPage.map((card) => {
             return (
               <CardItem
                 key={card.id}
@@ -141,6 +150,12 @@ const Cards = () => {
             );
           })}
         </div>
+        <Pagination
+          cardsPerPage={cardsPerPage}
+          totalCards={filteredCards.length}
+          currentPage={currentPage}
+          changePage={changePage}
+        />
       </div>
     );
   }
