@@ -90,7 +90,7 @@ const Cards = () => {
         )}
         <div className='flex flex-col lg:flex-row justify-between items-center px-2 mb-4'>
           <h1 className='text-white text-3xl py-6 font-bold'>
-            {cards.length} Cards Retrieved
+            {filteredCards.length} Cards Retrieved
           </h1>
 
           {/* Filters available only when user is logged in */}
