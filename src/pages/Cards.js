@@ -68,6 +68,7 @@ const Cards = () => {
   useEffect(() => {
     const filtered = cards.filter(FILTERS[filter]);
     setFilteredCards(filtered);
+    setCurrentPage(1);
   }, [filter, cards]);
 
   // Get posts for current page
