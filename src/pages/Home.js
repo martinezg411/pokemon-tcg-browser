@@ -17,9 +17,9 @@ const Home = ({ history }) => {
               You have bad memory. Let us help you keep track of which cards you
               currently own. That is, if you can find any.
             </p>
-            <div className='w-full flex flex-col lg:flex-row gap-4 mt-2'>
+            <div className='w-full flex flex-col lg:flex-row mt-2'>
               <button
-                className='bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md focus:outline-none text-md w-full'
+                className='bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md focus:outline-none text-md w-full mb-4 lg:mb-0 lg:mr-4'
                 onClick={() => handleClick('search')}
               >
                 Search for cards
@@ -37,8 +37,8 @@ const Home = ({ history }) => {
           </div>
         </div>
         {/* Features Overview */}
-        <div className='flex flex-col lg:flex-row justify-evenly gap-8 mb-16'>
-          <div className='w-full text-white text-center mb-2 lg:mb-0'>
+        <div className='flex flex-col lg:flex-row justify-evenly mb-16'>
+          <div className='w-full text-white text-center mb-8 lg:mb-0 px-4'>
             <i className='fas fa-search fa-3x mb-2'></i>
             <h1 className='text-xl font-bold mb-2'>Search for cards</h1>
             <p className='opacity-75'>
@@ -46,7 +46,7 @@ const Home = ({ history }) => {
               can browse by set.
             </p>
           </div>
-          <div className='w-full text-white text-center mb-2 lg:mb-0'>
+          <div className='w-full text-white text-center mb-8 lg:mb-0 px-4'>
             <i className='fas fa-tasks fa-3x mb-2 mx-auto'></i>
             <h1 className='text-xl font-bold mb-2'>
               Add cards to your collection
@@ -57,9 +57,9 @@ const Home = ({ history }) => {
               access this feature.
             </p>
           </div>
-          <div className='w-full text-white text-center mb-2 lg:mb-0'>
-            <div className='flex flex-row justify-center gap-4 mb-2  '>
-              <i className='fas fa-mobile fa-3x'></i>
+          <div className='w-full text-white text-center mb-4 lg:mb-0 px-4'>
+            <div className='flex flex-row justify-center mb-2  '>
+              <i className='fas fa-mobile fa-3x mr-4'></i>
               <i className='fas fa-desktop fa-3x'></i>
             </div>
             <h1 className='text-xl font-bold mb-2'>Access Anywhere</h1>

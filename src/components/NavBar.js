@@ -76,7 +76,7 @@ const NavBar = () => {
               ) : (
                 <Link
                   to='/login'
-                  className='px-3 pt-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
+                  className='px-3 pt-3 pb-3 lg:pb-0 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
                 >
                   Login
                 </Link>
