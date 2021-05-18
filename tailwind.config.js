@@ -18,6 +18,13 @@ module.exports = {
       inner:
         'inset 120px 100px 250px #000000, inset -120px -100px 250px #000000',
     },
+    // height: {
+    //   showcaseImageHeight: '342px',
+    // },
+
+    // width: {
+    //   showcaseImageWidth: '245px',
+    // },
   },
   variants: {
     extend: {

@@ -28,11 +28,15 @@ const NavBar = () => {
               <i className='fas fa-search text-white pt-2 mr-4 text-lg hover:text-blue-600'></i>
             </Link>
             <button
-              className='text-white cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none hover:text-blue-600'
+              className='text-white cursor-pointer text-2xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none hover:text-blue-600'
               type='button'
               onClick={handleClick}
             >
-              <i className='fas fa-bars'></i>
+              {navBarOpen ? (
+                <i className='fas fa-times'></i>
+              ) : (
+                <i className='fas fa-bars'></i>
+              )}
             </button>
           </div>
         </div>
@@ -40,7 +44,9 @@ const NavBar = () => {
         <div
           className={`lg:flex items-center ${navBarOpen ? 'flex' : 'hidden'}`}
         >
-          <ul className='flex flex-col lg:flex-row lg:justify-end list-none lg:ml-auto'>
+          <ul
+            className={`flex flex-col lg:flex-row lg:justify-end list-none lg:ml-auto`}
+          >
             <li className='lg:py-1'>
               <Link
                 to='/browse'
@@ -70,7 +76,7 @@ const NavBar = () => {
               ) : (
                 <Link
                   to='/login'
-                  className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
+                  className='px-3 pt-3 flex items-center text-xs uppercase font-bold leading-snug text-white hover:text-blue-600'
                 >
                   Login
                 </Link>

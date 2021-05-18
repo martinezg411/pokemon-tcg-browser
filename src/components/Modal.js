@@ -11,7 +11,7 @@ const Modal = ({ card, close }) => {
 
   return (
     <div
-      className='fixed z-20 top-0 left-0 bg-black h-screen w-screen bg-opacity-90 text-center p-8'
+      className='fixed z-20 top-0 left-0 bg-black h-screen w-screen bg-opacity-90 text-center'
       onClick={handleClick}
     >
       <button
@@ -20,8 +20,30 @@ const Modal = ({ card, close }) => {
       >
         <i className='fas fa-times'></i>
       </button>
-      <div ref={contentRef} className='inline-block min-w-sm sm:h-full '>
-        <img src={card.images.large} alt='Pokemon Card' className='h-full' />
+      <div
+        ref={contentRef}
+        className='h-full w-full text-white overflow-scroll flex flex-col lg:flex-row'
+      >
+        <img
+          src={card.images.large}
+          alt='Pokemon Card'
+          className='h-auto w-full sm:h-full
+           sm:w-auto py-4 '
+        />
+        <div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+            provident maxime non delectus qui temporibus illo fuga perferendis
+            dolores vero quidem, debitis, voluptate cumque consequuntur corporis
+            praesentium accusantium facere quae.
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+            provident maxime non delectus qui temporibus illo fuga perferendis
+            dolores vero quidem, debitis, voluptate cumque consequuntur corporis
+            praesentium accusantium facere quae.
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@
     "postcss": "^7.0.35",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
+    "react-alice-carousel": "^2.5.1",
     "react-dom": "^17.0.1",
     "react-loading-skeleton": "^2.2.0",
     "react-router-dom": "^5.2.0",
@@ -52,7 +53,6 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "craco.config.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/martinezg411/pokemon-tcg-browser.git"
