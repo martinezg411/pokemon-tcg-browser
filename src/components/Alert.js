@@ -3,7 +3,7 @@ const Alert = ({ type, message, removeAlert }) => {
     <div
       className={`${
         type === 'success' ? 'bg-green-600' : 'bg-red-500'
-      } container flex flex-row justify-between p-4 mx-auto text-white rounded font-bold fixed bottom-5 z-10 bg-opacity-95`}
+      } container flex flex-row justify-between p-4 mx-auto text-white rounded font-bold fixed bottom-5 z-10 bg-opacity-95 alert-open`}
     >
       <span>{message}</span>
       <i

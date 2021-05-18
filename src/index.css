@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card-item-clicked {
+  border-width: 8px;
+  border-color: blue;
+  border-radius: 15px;
+  transition: border-width 100ms ease-in-out;
+}
+
+.card-item-no-click {
+  border-width: 0;
+  border-radius: 15px;
+  transition: border-width 100ms ease-in-out;
+}
+
+.home {
+  background: rgb(9, 9, 121);
+  background: linear-gradient(
+    0deg,
+    rgba(9, 9, 121, 1) 0%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 1) 75%
+  );
+}
+
+.showcase-image {
+  height: 342px;
+  width: 245px;
+}

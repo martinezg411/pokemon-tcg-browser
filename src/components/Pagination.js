@@ -14,7 +14,7 @@ const Pagination = ({ cardsPerPage, totalCards, currentPage, changePage }) => {
           <button
             className={`${
               currentPage === pageNum ? 'bg-blue-800' : 'bg-blue-600'
-            }  w-10 h-10 mx-1 rounded-full hover:bg-blue-800 focus:outline-none`}
+            }  w-10 h-10 m-1 rounded-full hover:bg-blue-800 focus:outline-none`}
             onClick={() => {
               changePage(pageNum);
             }}

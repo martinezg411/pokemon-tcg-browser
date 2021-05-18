@@ -40,7 +40,7 @@ const CardItem = ({ card, alert, expand }) => {
         </button>
       ) : (
         <button
-          className='text-blue-500 hover:text-blue-600 text-xl focus:outline-none'
+          className='text-gray-500 hover:text-gray-600 text-xl focus:outline-none'
           onClick={toggleCheck}
         >
           <i className='fas fa-expand fa-lg'></i>
@@ -57,8 +57,8 @@ const CardItem = ({ card, alert, expand }) => {
           src={card.images.small}
           className={`mx-auto ${
             isCardInCollection(card)
-              ? 'border-8 border-blue-600 rounded-2xl'
-              : 'border-0'
+              ? 'card-item-clicked'
+              : 'card-item-no-click'
           }`}
           onClick={handleClick}
         />
