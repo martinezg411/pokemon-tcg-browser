@@ -86,7 +86,7 @@ const Cards = () => {
     return <Error message={'No results were found.'} />;
   } else {
     return (
-      <div className='container mx-auto mt-4 mb-28'>
+      <div className='container mx-auto mt-4 mb-28 px-4 md:px-0'>
         {modalCard && (
           <Modal card={modalCard} close={() => setModalCard(null)} />
         )}
@@ -140,7 +140,7 @@ const Cards = () => {
         </div>
 
         {/* Retrieved Cards */}
-        <div className='grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 '>
+        <div className='grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 '>
           {cardsOnPage.map((card) => {
             return (
               <CardItem
