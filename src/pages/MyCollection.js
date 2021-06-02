@@ -1,14 +1,17 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import UserContext from '../context/user/UserContext';
 import data from '../constants/data';
 import SetProgressItem from '../components/SetProgressItem';
 import Spinner from '../components/Spinner';
+import IconEmpty from '../assets/icon-empty.svg';
 
 const MyCollection = () => {
   const userContext = useContext(UserContext);
   const { collection } = userContext;
   const [collectionSets, setCollectionSets] = useState([]);
+  const [filteredSets, setFilteredSets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const text = useRef('');
 
   // Check user collection to find all sets that have at least one card.
   useEffect(() => {
@@ -39,8 +42,26 @@ const MyCollection = () => {
     });
 
     setCollectionSets(items);
+    setFilteredSets(items);
     setIsLoading(false);
   }, [collection]);
+
+  const filterSets = (str) => {
+    setFilteredSets(
+      collectionSets.filter((set) => {
+        const regex = new RegExp(`${str}`, 'gi');
+        return set.name.match(regex);
+      }),
+    );
+  };
+
+  const onFilterTextChange = (e) => {
+    if (text.current.value !== '') {
+      filterSets(e.target.value);
+    } else {
+      setFilteredSets([...collectionSets]);
+    }
+  };
 
   if (isLoading) {
     return <Spinner message='Retrieving your collection.' />;
@@ -54,9 +75,37 @@ const MyCollection = () => {
           </h1>
         ) : (
           <div>
-            {collectionSets.map((set) => (
-              <SetProgressItem key={set.id} information={set} />
-            ))}
+            <div className='flex flex-row mb-6'>
+              <input
+                ref={text}
+                type='text'
+                name='collection-search'
+                placeholder='Find a set...'
+                autoComplete='off'
+                className='text-lg text-white flex-grow mr-4 bg-black outline-none border-2 border-gray-800 px-4 py-2 focus:border-blue-600 rounded-md'
+                onChange={onFilterTextChange}
+              />
+              <div className='cursor-pointer p-2 flex flex-row justify-evenly items-center text-white border-2 border-gray-800 hover:border-blue-600 px-6 py-2 rounded-md'>
+                <span className='text-md mr-3'>Sort By</span>
+                <i className='fas fa-chevron-down'></i>
+              </div>
+            </div>
+            <div>
+              {filteredSets.length !== 0 ? (
+                filteredSets.map((set) => (
+                  <SetProgressItem key={set.id} information={set} />
+                ))
+              ) : (
+                <div className='flex flex-col justify-center align-middle mt-16 text-center'>
+                  <img src={IconEmpty} className='h-80 mb-10' />
+                  <h1 className='text-white text-2xl font-bold'>
+                    Uh Oh! No results found searching for{' '}
+                    <span className='text-blue-600'>{`'${text.current.value}'`}</span>
+                    .
+                  </h1>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

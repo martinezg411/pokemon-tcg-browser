@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import UserContext from '../context/user/UserContext';
 
 import CardItem from '../components/CardItem';
@@ -17,7 +18,7 @@ const Cards = () => {
   const location = useLocation();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(20);
+  const [cardsPerPage, setCardsPerPage] = useState(15);
   const [cards, setCards] = useState([]);
   const [modalCard, setModalCard] = useState(null);
   const [error, setError] = useState(null);
@@ -139,7 +140,7 @@ const Cards = () => {
         </div>
 
         {/* Retrieved Cards */}
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-2'>
+        <div className='grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 '>
           {cardsOnPage.map((card) => {
             return (
               <CardItem
